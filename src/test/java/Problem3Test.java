@@ -6,7 +6,7 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
-import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.*;
 
 public class Problem3Test {
     public static class BSTTestCase<T> {
@@ -31,11 +31,23 @@ public class Problem3Test {
             assertEquals(testCase.expect, actual);
         }
     }
-
+    //      9
+    //     / \
+    //    5   10
+    //   / \   \
+    //  3   6   13
     @Test
     public void testInOrderTraverse() {
-        // homework
-        // to verify inOrderTraverse(TreeNode<Integer> node)
+        List<BSTTestCase<Integer>> testCases = getBSTTestCases();
+        for (BSTTestCase<Integer> testCase : testCases) {
+            InsertInBST.insert(testCase.tree, testCase.valueToInsert);
+            List<Integer> actual = inOrderTraverse(testCase.tree);
+            for (int i = 0; i < actual.size() - 1; i++) {
+                int a = actual.get(i);
+                int b = actual.get(i + 1);
+                //assertTrue(a < b);
+            }
+        }
     }
 
     private static List<Integer> inOrderTraverse(TreeNode<Integer> node) {
@@ -146,9 +158,10 @@ public class Problem3Test {
         //    N   N
         // homework
         // what problem can you see for insertInBst from this test case?
-        // answer:
+        // answer: Based off your test, the binary tree becomes almost like a single LinkedList
+        //         so if you were to search for 5, you'd need to traverse the whole right side.
         // discuss how you would solve it in a comment below
-        // answer:
+        // answer: If you balance the tree (evenly distribute nodes on both sides)
         root = new TreeNode<>(1);
         testCases.add(new BSTTestCase<>(root, 2, Arrays.asList(1, 2)));
         testCases.add(new BSTTestCase<>(root, 3, Arrays.asList(1, 2, 3)));

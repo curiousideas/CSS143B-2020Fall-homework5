@@ -6,6 +6,7 @@ import java.util.List;
 import java.util.Queue;
 
 // I used a LinkedList to implement my queue. I used it because I'm familiar with it.
+// I don't have to copy or do any memory operations
 
 public class LevelOrderTraverse {
     public static List<List<Integer>> levelOrder(TreeNode<Integer> root) {

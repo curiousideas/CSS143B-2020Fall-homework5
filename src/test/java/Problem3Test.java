@@ -42,10 +42,11 @@ public class Problem3Test {
         for (BSTTestCase<Integer> testCase : testCases) {
             InsertInBST.insert(testCase.tree, testCase.valueToInsert);
             List<Integer> actual = inOrderTraverse(testCase.tree);
+
+            assertTrue(testCase.expect.size() == actual.size());
+
             for (int i = 0; i < actual.size() - 1; i++) {
-                int a = actual.get(i);
-                int b = actual.get(i + 1);
-                //assertTrue(a < b);
+                assertEquals(testCase.expect.get(i), actual.get(i));
             }
         }
     }
